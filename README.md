@@ -1,2 +1,0 @@
-# GameLife
-GameLife with Kotlin
