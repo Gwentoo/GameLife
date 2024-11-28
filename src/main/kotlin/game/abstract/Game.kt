@@ -5,8 +5,8 @@ import game.type.UnCyclicGame
 abstract class Game {
 
     var matrix: Array<IntArray>
-    var rows = 3
-    var cols = 3
+    var rows = 5
+    var cols = 5
 
     constructor(rows: Int, cols: Int){
         this.matrix = Array(rows) { IntArray(cols) }
@@ -26,7 +26,7 @@ abstract class Game {
 
     abstract fun neighbors(row: Int, col: Int): Int
 
-    fun newState() {
+    fun newState(): Array<IntArray> {
         val newState = Array(rows) {IntArray(cols)}
         for (i in 0 until rows){
             for (j in 0 until cols){
@@ -39,8 +39,8 @@ abstract class Game {
                 }
             }
         }
-        this.matrix = newState
-//        return newState
+
+      return newState
     }
 
 

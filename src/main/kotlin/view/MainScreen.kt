@@ -72,16 +72,10 @@ fun myScreen(){
 
 
       ){
-
           coolButton(
               onClick = {
-
-                  game.newState()
-                  for (i in game.matrix){
-                      for (p in i){
-                          print(p)
-                      }
-                  }
+                  val ns = game.newState()
+                  game = CyclicGame(ns)
 
                         },
 
@@ -91,6 +85,7 @@ fun myScreen(){
           Spacer(modifier = Modifier.height(16.dp))
           coolButton(
               onClick = {
+
                   isRun = true
 
               },
@@ -145,7 +140,8 @@ fun myScreen(){
       }
         LaunchedEffect(isRun) {
             while (isRun) {
-                game.newState()
+                val ns = game.newState()
+                game = CyclicGame(ns)
                 kotlinx.coroutines.delay(10)
             }
         }
