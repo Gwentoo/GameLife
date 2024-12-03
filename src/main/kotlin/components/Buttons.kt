@@ -20,7 +20,7 @@ interface BtnSize{
 }
 
 object MediumBtn: BtnSize{
-    override var width: Dp = 240.dp
+    override var width: Dp = 270.dp
     override var height: Dp = 40.dp
 }
 

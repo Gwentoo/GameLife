@@ -15,17 +15,14 @@ import kotlin.math.max
 
 
 @Composable
-fun gridDisplay(game: Game, clickCoordinates: Pair<Float, Float>?) {
-    print("DIS")
+fun gridDisplay(game: Game, changeCells: MutableList<IntArray>) {
     val rows = game.matrix.size
     val cols = game.matrix[0].size
 
-    val cellSize = 650 / max(rows, cols)
+    val cellSize = 500 / max(rows, cols)
 
 
-
-
-    Canvas(modifier = Modifier.size(650.dp, 650.dp)) {
+    Canvas(modifier = Modifier.size(500.dp, 500.dp)) {
         for (col in 0 until cols + 1) {
 
             drawLine(
@@ -47,8 +44,6 @@ fun gridDisplay(game: Game, clickCoordinates: Pair<Float, Float>?) {
 
 
         }
-
-
 
 
         for (row in 0 until rows) {
