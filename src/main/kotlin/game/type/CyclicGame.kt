@@ -1,17 +1,21 @@
 package game.type
 
 import androidx.compose.runtime.MutableState
+import androidx.compose.ui.graphics.Color
 import game.abstract.Game
+import kotlin.math.max
 
 
 class CyclicGame : Game {
+
     constructor(rows: Int, cols: Int){
-        this.matrix = Array(rows) { IntArray(cols) }
+        this.matrix = Array(rows) { IntArray(cols) {0} }
         this.rows = rows
         this.cols = cols
+
     }
     constructor(){
-        this.matrix = Array(rows){IntArray(cols)}
+        this.matrix = Array(rows){IntArray(cols){0} }
 
     }
     constructor(matrix: Array<IntArray>){

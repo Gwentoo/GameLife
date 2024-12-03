@@ -1,15 +1,21 @@
 package game.abstract
-
-import game.type.UnCyclicGame
+import androidx.compose.foundation.layout.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import components.Cell
+import kotlin.math.max
 
 abstract class Game {
 
     var matrix: Array<IntArray>
-    var rows = 5
-    var cols = 5
+    var rows = 8
+    var cols = 8
 
     constructor(rows: Int, cols: Int){
-        this.matrix = Array(rows) { IntArray(cols) }
+        this.matrix = Array(rows) { IntArray(cols) {0} }
         this.rows = rows
         this.cols = cols
     }
@@ -26,8 +32,9 @@ abstract class Game {
 
     abstract fun neighbors(row: Int, col: Int): Int
 
-    fun newState(): Array<IntArray> {
-        val newState = Array(rows) {IntArray(cols)}
+    fun newState():  MutableList<IntArray> {
+        var changeCell: MutableList<IntArray> = mutableListOf()
+        var newState = Array(rows) {IntArray(cols)}
         for (i in 0 until rows){
             for (j in 0 until cols){
                 val neighborsCount = neighbors(i, j)
@@ -37,12 +44,20 @@ abstract class Game {
                 if (matrix[i][j] == 1 && (neighborsCount == 2 || neighborsCount == 3)){
                     newState[i][j] = 1
                 }
+                if (matrix[i][j] != newState[i][j]){
+                    changeCell.add(intArrayOf(i, j))
+
+                }
             }
         }
-
-      return newState
+        for (coord in changeCell){
+            val (x, y) = coord
+            matrix[x][y] = if(matrix[x][y] == 1) 0 else 1
+        }
+      return changeCell
     }
 
 
 
-}
+    }
+

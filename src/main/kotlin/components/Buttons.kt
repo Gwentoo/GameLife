@@ -20,7 +20,7 @@ interface BtnSize{
 }
 
 object MediumBtn: BtnSize{
-    override var width: Dp = 220.dp
+    override var width: Dp = 240.dp
     override var height: Dp = 40.dp
 }
 
@@ -30,19 +30,23 @@ object ErrorSize: BtnSize{
 }
 
 
+
+
 @Composable
 fun coolButton(
     onClick: ()->Unit,
     size: BtnSize,
     text: String,
-    enabled: Boolean = true)
+    enabled: Boolean = true,
+    backgroundColor: Color = Color(1,  1, 1)
+)
     {
 
     Button(
         onClick = onClick,
         modifier = Modifier.size(width=size.width, height=size.height),
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color(1, 1, 1),
+            backgroundColor = backgroundColor,
             contentColor = Color.White),
             enabled = enabled
 
