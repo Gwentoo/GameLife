@@ -27,7 +27,7 @@ import kotlin.random.Random
 fun myScreen() {
 
     var type by remember { mutableStateOf("UnCyclic") }
-    var sliderValue by remember { mutableStateOf(100f) }
+    var sliderValue by remember { mutableStateOf(150f) }
     val valueRange = 1f..300f
     val colorStop = Color(217, 43, 43)
     val colorStart = Color(29, 166, 27)
@@ -35,8 +35,6 @@ fun myScreen() {
     var game by remember { mutableStateOf(if (type == "UnCyclic") UnCyclicGame(newConfig) else CyclicGame(newConfig)) }
     var rows by remember { mutableStateOf(newConfig.size.toString()) }
     var cols by remember { mutableStateOf(newConfig[0].size.toString()) }
-    var showErrorDialogDim by remember { mutableStateOf(false) }
-    var showErrorDialogData by remember { mutableStateOf(false) }
     var changeCells by remember { mutableStateOf(game.newState()) }
     var cellSize = 500 / max(rows.toInt(), cols.toInt())
     var clickCoordinates by remember { mutableStateOf<Pair<Float, Float>?>(null) }
@@ -46,8 +44,6 @@ fun myScreen() {
     var selectedFile by remember { mutableStateOf("") }
     var expanded by remember { mutableStateOf(false) }
     var rate by remember { mutableStateOf("0.5") }
-
-
 
 
 
@@ -203,9 +199,6 @@ fun myScreen() {
             }
 
             Spacer(modifier = Modifier.height(70.dp))
-
-            dimError(showErrorDialogDim) { showErrorDialogDim = false }
-            incorrectDataError(showErrorDialogData) { showErrorDialogData = false }
 
             coolButton(
                 onClick = {
