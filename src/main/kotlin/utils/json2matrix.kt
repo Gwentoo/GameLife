@@ -10,8 +10,6 @@ import javax.swing.filechooser.FileNameExtensionFilter
 fun json2matrix(): Array<IntArray> {
     val fileChooser = JFileChooser()
 
-    val projectPath = File("D:/Progs/Life").absoluteFile
-    fileChooser.currentDirectory = projectPath
 
     fileChooser.dialogTitle = "Открыть файл"
     fileChooser.fileFilter = FileNameExtensionFilter("JSON Files", "json")

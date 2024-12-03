@@ -12,8 +12,6 @@ fun matrix2json(game: Game) {
     val gson = Gson()
     val fileChooser = JFileChooser()
 
-    val projectPath = File("D:/Progs/Life").absoluteFile
-    fileChooser.currentDirectory = projectPath
 
     fileChooser.dialogTitle = "Сохранить файл"
     fileChooser.fileFilter = FileNameExtensionFilter("JSON Files", "json")
