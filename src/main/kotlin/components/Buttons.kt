@@ -29,7 +29,10 @@ object ErrorSize: BtnSize{
     override var height: Dp = 100.dp
 }
 
-
+object SmallBtn: BtnSize{
+    override var width: Dp = 185.dp
+    override var height: Dp = 45.dp
+}
 
 
 @Composable

@@ -16,6 +16,7 @@ repositories {
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     maven("https://raw.github.com/gephi/gephi/mvn-thirdparty-repo/")
     google()
+
 }
 
 dependencies {
