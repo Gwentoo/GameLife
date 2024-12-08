@@ -1,6 +1,7 @@
 
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -11,34 +12,62 @@ import androidx.compose.ui.unit.dp
 import game.abstract.Game
 
 
-import kotlin.math.max
 
 
 @Composable
-fun gridDisplay(game: Game, changeCells: MutableList<IntArray>) {
+fun gridDisplay(game: Game, changeCells: MutableList<IntArray>, gridView: Boolean, cellSize: Int) {
     val rows = game.matrix.size
     val cols = game.matrix[0].size
 
-    val cellSize = 500 / max(rows, cols)
 
 
-    Canvas(modifier = Modifier.size(500.dp, 500.dp)) {
-        for (col in 0 until cols + 1) {
 
+    Canvas(modifier = Modifier.size(497.dp, 497.dp)) {
+        if (gridView) {
+            for (col in 0 until cols + 1) {
+
+                drawLine(
+                    color = Color.Black,
+                    start = Offset((col * cellSize).toFloat(), 0f),
+                    end = Offset((col * cellSize).toFloat(), (rows * cellSize).toFloat()),
+                    strokeWidth = 1f
+                )
+
+            }
+            for (row in 0 until rows + 1) {
+
+                drawLine(
+                    color = Color.Black,
+                    start = Offset(0f, (row * cellSize).toFloat()),
+                    end = Offset((cols * cellSize).toFloat(), (row * cellSize).toFloat()),
+                    strokeWidth = 1f
+                )
+
+
+            }
+        } else {
             drawLine(
                 color = Color.Black,
-                start = Offset((col * cellSize).toFloat(), 0f),
-                end = Offset((col * cellSize).toFloat(), (rows * cellSize).toFloat()),
+                start = Offset(0f, (rows * cellSize).toFloat()),
+                end = Offset((cols * cellSize).toFloat(), (rows * cellSize).toFloat()),
                 strokeWidth = 1f
             )
-
-        }
-        for (row in 0 until rows + 1) {
-
             drawLine(
                 color = Color.Black,
-                start = Offset(0f, (row * cellSize).toFloat()),
-                end = Offset((cols * cellSize).toFloat(), (row * cellSize).toFloat()),
+                start = Offset(0f, 0f),
+                end = Offset(0f, (rows * cellSize).toFloat()),
+                strokeWidth = 1f
+            )
+            drawLine(
+                color = Color.Black,
+                start = Offset(0f, 0f),
+                end = Offset((cols * cellSize).toFloat(), 0f),
+                strokeWidth = 1f
+            )
+            drawLine(
+                color = Color.Black,
+                start = Offset((cols * cellSize).toFloat(), 0f),
+                end = Offset((cols * cellSize).toFloat(), (rows * cellSize).toFloat()),
                 strokeWidth = 1f
             )
 
@@ -55,7 +84,7 @@ fun gridDisplay(game: Game, changeCells: MutableList<IntArray>) {
                         size = Size((cellSize + 1).toFloat(), (cellSize + 1).toFloat())
 
                     )
-                }else{
+                } else {
                     drawRect(
                         color = Color.White,
                         topLeft = Offset((col * cellSize + 1).toFloat(), (row * cellSize + 1).toFloat()),
@@ -65,8 +94,6 @@ fun gridDisplay(game: Game, changeCells: MutableList<IntArray>) {
                 }
             }
         }
-
-
 
 
     }

@@ -1,4 +1,3 @@
-
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.*
 import androidx.compose.ui.res.painterResource
@@ -7,7 +6,6 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import view.myScreen
-
 
 @Composable
 @Preview
@@ -20,7 +18,7 @@ fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
         state = WindowState(width = 1080.dp, height = 1080.dp),
-        title = "Game Life",
+        title = "Life Game",
         icon = painterResource("icon.png")
     ) {
         app()

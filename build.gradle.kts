@@ -44,11 +44,11 @@ compose.desktop {
     }
 }
 tasks.shadowJar {
-    archiveBaseName.set("myapp")
+    archiveBaseName.set("GameLife")
     archiveClassifier.set("")
-    archiveVersion.set("4.0")
+    archiveVersion.set("1.0")
 
     manifest {
-        attributes["Main-Class"] = "D/Progs/Life/src/main/kotlin/MainKt"
+        attributes["Main-Class"] = "MainKt"
     }
 }
